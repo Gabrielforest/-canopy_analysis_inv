@@ -1,0 +1,65 @@
+---
+title: "dossel"
+format:
+  html:
+    toc: true
+    number-sections: true
+---
+
+# Análise de dossel
+
+Análise de dossel de onze parcelas amostradas durante o inventário com imagem feita utilizando a câmera do celular Samsung S10e.
+
+```{r, include = FALSE}
+
+library( exiftoolr )
+library( coveR )
+library( raster ) 
+library( DT )
+
+files <- dir( getwd( ), pattern = "*.jpeg" )
+
+res <- NULL
+for ( i in 1:length( files ) ) {
+  
+  cv <- coveR( files[ i ], 
+               which.blue = 3, 
+               method = "Minimum", 
+               gapmethod = "alivernini", 
+               k = 0.5, 
+               export.image = FALSE, 
+               exif = FALSE, 
+               crop = NULL )
+  
+  res <- rbind( res, cv )
+
+}
+
+res <- res[, 1:16 ]
+
+dt <- cbind( ID = res[, 1 ],  round( res[, 2:12 ], 2 ) )
+
+colnames( dt ) <- c( "Parcela", "gap médio", "gap grande", "gap pequeno", 
+                     "fração de intervalo", "cobertura foliar", "copa florestal",
+                     "porosidade aglomerada", "Índice de área foliar efetiva",
+                     "Índice de área foliar real", "Índice de agregação", "k" )
+
+```
+```{r echo =FALSE}
+DT::datatable( dt[ order( dt[, 1 ] ), ] )
+```
+
+
+# Observações
+
+Parcela com maior quantidade de pixels na classe de gap grande (menor cobertura)
+
+Parcela com maior quantidade de pixels na classe de gap pequeno (maior cobertura)
+
+Parcela com maior cobertura foliar
+
+Parcela com menor cobertura foliar
+
+# Fotos usadas
+
+Importante salientar que algumas parcelas apresentaram cobertura foliar de espécies nativas, o que gerou influência nas análises de dossel feitas por pixel apresentadas anteriormente.  
