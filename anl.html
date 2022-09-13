@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.0.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>dossel</title>
+<title>Análise de dossel - Inventário Florestal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list{list-style: none;}
 
 <script src="anl_files/libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="anl_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="anl_files/libs/datatables-binding-0.24/datatables.js"></script>
+<script src="anl_files/libs/datatables-binding-0.25/datatables.js"></script>
 <script src="anl_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="anl_files/libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="anl_files/libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
@@ -52,7 +52,8 @@ ul.task-list{list-style: none;}
   <ul>
   <li><a href="#análise-de-dossel" id="toc-análise-de-dossel" class="nav-link active" data-scroll-target="#análise-de-dossel"> <span class="header-section-number">1</span> Análise de dossel</a></li>
   <li><a href="#observações" id="toc-observações" class="nav-link" data-scroll-target="#observações"> <span class="header-section-number">2</span> Observações</a></li>
-  <li><a href="#fotos-usadas" id="toc-fotos-usadas" class="nav-link" data-scroll-target="#fotos-usadas"> <span class="header-section-number">3</span> Fotos usadas</a></li>
+  <li><a href="#dap-médio-por-parcela" id="toc-dap-médio-por-parcela" class="nav-link" data-scroll-target="#dap-médio-por-parcela"> <span class="header-section-number">3</span> DAP médio por parcela</a></li>
+  <li><a href="#considerações-finais" id="toc-considerações-finais" class="nav-link" data-scroll-target="#considerações-finais"> <span class="header-section-number">4</span> Considerações finais</a></li>
   </ul>
 </nav>
 </div>
@@ -60,7 +61,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">dossel</h1>
+<h1 class="title">Análise de dossel - Inventário Florestal</h1>
 </div>
 
 
@@ -80,21 +81,31 @@ ul.task-list{list-style: none;}
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-ce41f08e7cd8c368abbc" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ce41f08e7cd8c368abbc">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11"],["X10.jpeg","X11.jpeg","X12.jpeg","X13.jpeg","X15.jpeg","X17.jpeg","X20.jpeg","X21.jpeg","X4.jpeg","X5.jpeg","X6.jpeg"],[0.56,0.67,0.57,0.64,0.72,0.59,0.51,0.62,0.67,0.57,0.78],[0.39,0.29,0.38,0.32,0.24,0.36,0.44,0.35,0.29,0.39,0.19],[0.04,0.04,0.04,0.04,0.03,0.05,0.04,0.03,0.04,0.05,0.03],[0.44,0.33,0.43,0.36,0.28,0.41,0.49,0.38,0.33,0.43,0.22],[0.56,0.67,0.57,0.64,0.72,0.59,0.51,0.62,0.67,0.57,0.78],[0.61,0.71,0.62,0.68,0.76,0.64,0.56,0.65,0.71,0.61,0.81],[0.07,0.06,0.07,0.06,0.04,0.07,0.07,0.05,0.05,0.07,0.04],[1.66,2.19,1.7,2.03,2.57,1.8,1.45,1.92,2.2,1.67,3.02],[3.22,4.06,3.27,3.8,4.72,3.35,2.89,3.87,4.11,3.18,5.18],[0.52,0.54,0.52,0.53,0.55,0.54,0.5,0.5,0.54,0.52,0.58],[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Parcela<\/th>\n      <th>gap médio<\/th>\n      <th>gap grande<\/th>\n      <th>gap pequeno<\/th>\n      <th>fração de intervalo<\/th>\n      <th>cobertura foliar<\/th>\n      <th>copa florestal<\/th>\n      <th>porosidade aglomerada<\/th>\n      <th>Índice de área foliar efetiva<\/th>\n      <th>Índice de área foliar real<\/th>\n      <th>Índice de agregação<\/th>\n      <th>k<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-26e2a18ae641f11f8599" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-26e2a18ae641f11f8599">{"x":{"filter":"none","vertical":false,"data":[["10","11","12","13","15","17","20","21","4","5","6"],[0.565,0.666,0.573,0.638,0.724,0.593,0.515,0.617,0.667,0.565,0.779],[0.392,0.294,0.384,0.321,0.242,0.36,0.444,0.35,0.294,0.39,0.187],[0.043,0.04,0.043,0.041,0.034,0.047,0.041,0.033,0.038,0.045,0.034],[0.435,0.334,0.427,0.362,0.276,0.407,0.485,0.383,0.333,0.435,0.221],[0.565,0.666,0.573,0.638,0.724,0.593,0.515,0.617,0.667,0.565,0.779],[0.608,0.706,0.616,0.679,0.758,0.64,0.556,0.65,0.706,0.61,0.813],[0.071,0.056,0.07,0.061,0.044,0.073,0.075,0.051,0.054,0.074,0.041],[1.663,2.194,1.702,2.031,2.574,1.799,1.447,1.92,2.202,1.665,3.021],[3.218,4.058,3.272,3.802,4.717,3.349,2.89,3.869,4.111,3.178,5.18],[0.517,0.541,0.52,0.534,0.546,0.537,0.501,0.496,0.536,0.524,0.583],[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Parcela<\/th>\n      <th>gap médio<\/th>\n      <th>gap grande<\/th>\n      <th>gap pequeno<\/th>\n      <th>fração de intervalo<\/th>\n      <th>cobertura foliar<\/th>\n      <th>copa florestal<\/th>\n      <th>porosidade aglomerada<\/th>\n      <th>Índice de área foliar efetiva<\/th>\n      <th>Índice de área foliar real<\/th>\n      <th>Índice de agregação<\/th>\n      <th>k<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 <section id="observações" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Observações</h1>
-<p>Parcela com maior quantidade de pixels na classe de gap grande (menor cobertura)</p>
-<p>Parcela com maior quantidade de pixels na classe de gap pequeno (maior cobertura)</p>
-<p>Parcela com maior cobertura foliar</p>
-<p>Parcela com menor cobertura foliar</p>
+<p>Parcela com maior quantidade de pixels na classe de gap grande (menor cobertura), foi a parcela 20 com 44.4% dessa classe de espaçamento.</p>
+<p>Parcela com maior quantidade de pixels na classe de gap pequeno (maior cobertura de dossel) foi a parcela 21 com 3.3% dessa classe de espaçamento.</p>
+<p>A parcela 6 obteve a maior cobertura foliar, com 77.9%. Já a parcela 20, apresentou a menor porcentagem de cobertura foliar, com 51.5%</p>
 </section>
-<section id="fotos-usadas" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Fotos usadas</h1>
+<section id="dap-médio-por-parcela" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> DAP médio por parcela</h1>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="htmlwidget-a250def5692da5dd36cb" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a250def5692da5dd36cb">{"x":{"filter":"none","vertical":false,"data":[["19","15","21","13","14","20","1","2","17","9","6","7","11","4","18","10","5","8","12"],[19.2385168918291,18.9420908103204,18.2730634009899,18.1167295990297,17.9208465921474,17.88215009618,17.7878093833065,17.6781353039323,17.4648491738004,16.9942754507288,16.9547481656598,16.8353559294325,16.746572484753,16.7192267718036,16.7006586951096,16.4186473047187,16.11872292883,15.877179230297,15.5474123317116]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Parcelas<\/th>\n      <th>DAP médio<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="considerações-finais" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Considerações finais</h1>
 <p>Importante salientar que algumas parcelas apresentaram cobertura foliar de espécies nativas, o que gerou influência nas análises de dossel feitas por pixel apresentadas anteriormente.</p>
+<p>colocar as fotos aqui e comentar o que foi observado.</p>
 </section>
 
 </main>
