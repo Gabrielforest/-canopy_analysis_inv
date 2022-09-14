@@ -51,13 +51,37 @@ dt$Parcela <- gsub( "X", "", dt$Parcela )
 DT::datatable( dt[ order( dt[, 1 ] ), ], rownames = FALSE )
 ```
 
+::: {layout="[[1,1,1,1], [1,1,1,1], [1,1,1]]"}
+![Parcela 4](4.jpeg) 
+
+![Parcela 5](5.jpeg)
+
+![Parcela 6](6.jpeg) 
+
+![Parcela 10](10.jpeg)
+
+![Parcela 11](11.jpeg)
+
+![Parcela 12](12.jpeg)
+
+![Parcela 13](13.jpeg)
+
+![Parcela 15](15.jpeg)
+
+![Parcela 17](17.jpeg)
+
+![Parcela 20](20.jpeg)
+
+![Parcela 21](21.jpeg)
+:::
+
 # Observações
 
-Parcela com maior quantidade de pixels na classe de gap grande (menor cobertura), foi a parcela `r dt[ which.max( dt[, 3 ] ), 1 ]` com `r max( dt[, 3 ] ) * 100`% dessa classe de espaçamento. 
+\  A parcela com maior quantidade de pixels na classe de gap grande (menor cobertura), foi a parcela `r dt[ which.max( dt[, 3 ] ), 1 ]` com `r max( dt[, 3 ] ) * 100`% dessa classe de espaçamento. 
 
-Parcela com maior quantidade de pixels na classe de gap pequeno (maior cobertura de dossel) foi a parcela `r dt[ which.min( dt[, 4 ] ), 1 ]` com `r min( dt[, 4 ] ) * 100`% dessa classe de espaçamento.
+\  Já a parcela com maior quantidade de pixels na classe de gap pequeno (maior cobertura de dossel) foi a parcela `r dt[ which.min( dt[, 4 ] ), 1 ]` com `r min( dt[, 4 ] ) * 100`% dessa classe de espaçamento.
 
-A parcela `r dt[ which.max( dt[, 6 ] ), 1 ]` obteve a maior cobertura foliar, com `r dt[ which.max( dt[, 6 ] ), 6 ] * 100`%. Já a parcela `r dt[ which.min( dt[, 6 ] ), 1 ]`, apresentou a menor porcentagem de cobertura foliar, com `r dt[ which.min( dt[, 6 ] ), 6 ] * 100`%
+\  A parcela `r dt[ which.max( dt[, 6 ] ), 1 ]` obteve a maior cobertura foliar, com `r dt[ which.max( dt[, 6 ] ), 6 ] * 100`%. Já a parcela `r dt[ which.min( dt[, 6 ] ), 1 ]`, apresentou a menor porcentagem de cobertura foliar, com `r dt[ which.min( dt[, 6 ] ), 6 ] * 100`%
 
 # DAP médio por parcela
 
@@ -83,6 +107,6 @@ DT::datatable( dap_parcela[ order( dap_parcela$`DAP médio`, decreasing = TRUE )
 
 # Considerações finais
 
-Importante salientar que algumas parcelas apresentaram cobertura foliar de espécies nativas, o que gerou influência nas análises de dossel feitas por pixel apresentadas anteriormente.  
+\  Importante salientar que algumas parcelas apresentaram cobertura foliar de espécies nativas, o que gerou influência nas análises de dossel feitas por pixel apresentadas anteriormente.  
 
-colocar as fotos aqui e comentar o que foi observado.
+
