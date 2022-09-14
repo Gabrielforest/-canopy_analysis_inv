@@ -86,7 +86,7 @@ DT::datatable( dt[ order( dt[, 1 ] ), ], rownames = FALSE )
 # DAP médio por parcela
 
 ```{r echo = FALSE}
-fustes <- read.csv( "fustes.csv" )
+fustes <- read.csv( "../fustes.csv" )
 
 # padronizando observações:
 

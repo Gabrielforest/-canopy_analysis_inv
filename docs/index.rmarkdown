@@ -1,0 +1,118 @@
+---
+title: "Análise de dossel - Inventário Florestal"
+format:
+  html:
+    toc: true
+    number-sections: true
+---
+
+
+# Análise de dossel
+
+Análise de dossel de onze parcelas amostradas durante o inventário com imagem feita utilizando a câmera do celular Samsung S10e.
+
+
+```{r, include = FALSE}
+library( exiftoolr )
+library( coveR )
+library( raster ) 
+library( DT )
+
+files <- dir( getwd( ), pattern = "*.jpeg" )
+
+res <- NULL
+for ( i in 1:length( files ) ) {
+  
+  cv <- coveR( files[ i ], 
+               which.blue = 3, 
+               method = "Minimum", 
+               gapmethod = "alivernini", 
+               k = 0.5, 
+               export.image = FALSE, 
+               exif = FALSE, 
+               crop = NULL )
+  
+  res <- rbind( res, cv )
+
+}
+
+res <- res[, 1:16 ]
+
+dt <- cbind( ID = res[, 1 ],  round( res[, 2:12 ], 3 ) )
+
+colnames( dt ) <- c( "Parcela", "gap médio", "gap grande", "gap pequeno", 
+                     "fração de intervalo", "cobertura foliar", "copa florestal",
+                     "porosidade aglomerada", "Índice de área foliar efetiva",
+                     "Índice de área foliar real", "Índice de agregação", "k" )
+
+```
+
+```{r echo = FALSE}
+dt$Parcela <- gsub( ".jpeg", "", dt$Parcela )
+dt$Parcela <- gsub( "X", "", dt$Parcela )
+DT::datatable( dt[ order( dt[, 1 ] ), ], rownames = FALSE )
+```
+
+
+::: {layout="[[1,1,1,1], [1,1,1,1], [1,1,1]]"}
+![Parcela 4](4.jpeg) 
+
+![Parcela 5](5.jpeg)
+
+![Parcela 6](6.jpeg) 
+
+![Parcela 10](10.jpeg)
+
+![Parcela 11](11.jpeg)
+
+![Parcela 12](12.jpeg)
+
+![Parcela 13](13.jpeg)
+
+![Parcela 15](15.jpeg)
+
+![Parcela 17](17.jpeg)
+
+![Parcela 20](20.jpeg)
+
+![Parcela 21](21.jpeg)
+:::
+
+# Observações
+
+\  A parcela com maior quantidade de pixels na classe de gap grande (menor cobertura), foi a parcela `r dt[ which.max( dt[, 3 ] ), 1 ]` com `r max( dt[, 3 ] ) * 100`% dessa classe de espaçamento. 
+
+\  Já a parcela com maior quantidade de pixels na classe de gap pequeno (maior cobertura de dossel) foi a parcela `r dt[ which.min( dt[, 4 ] ), 1 ]` com `r min( dt[, 4 ] ) * 100`% dessa classe de espaçamento.
+
+\  A parcela `r dt[ which.max( dt[, 6 ] ), 1 ]` obteve a maior cobertura foliar, com `r dt[ which.max( dt[, 6 ] ), 6 ] * 100`%. Já a parcela `r dt[ which.min( dt[, 6 ] ), 1 ]`, apresentou a menor porcentagem de cobertura foliar, com `r dt[ which.min( dt[, 6 ] ), 6 ] * 100`%
+
+# DAP médio por parcela
+
+
+```{r echo = FALSE}
+fustes <- read.csv( "../fustes.csv" )
+
+# padronizando observações:
+
+fustes$obs[ fustes$obs == "tortinha" ] <- "torta"
+fustes$obs[ fustes$obs == "morta, ataq de xilóf" ] <- "morta"
+
+# analisando dap 
+
+fustes$cap <- as.numeric( gsub( ",", ".", gsub( "\\.", "", fustes$cap ) ) )
+fustes$dap <- fustes$cap / pi
+fustes$Parcela <- as.factor( fustes$Parcela )
+dap_parcela <- aggregate( dap ~ Parcela, data = fustes, FUN = mean )
+colnames( dap_parcela ) <- c( "Parcelas", "DAP médio" )
+DT::datatable( dap_parcela[ order( dap_parcela$`DAP médio`, decreasing = TRUE ), ], rownames = FALSE )
+
+```
+
+
+
+# Considerações finais
+
+\  Importante salientar que algumas parcelas apresentaram cobertura foliar de espécies nativas, o que gerou influência nas análises de dossel feitas por pixel apresentadas anteriormente.  
+
+
+
