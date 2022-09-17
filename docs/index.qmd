@@ -9,7 +9,7 @@ format:
 
 # Análise de dossel
 
-Análise de dossel de onze parcelas amostradas durante o inventário realizado no povoamento de _Eucalyptus saligna_ em propriedade localizada no município de Campina do Monte Alegre - SP, com imagem feita utilizando a câmera do celular Samsung S10e.
+Análise de dossel de onze parcelas amostradas durante o inventário realizado no povoamento de _Eucalyptus saligna_ em propriedade localizada no município de Buri - SP, com imagem feita utilizando a câmera do celular Samsung S10e.
 
 ```{r, include = FALSE}
 library( exiftoolr )
@@ -90,10 +90,15 @@ DT::datatable( dt[ order( dt[, 1 ] ), ], rownames = FALSE )
 fustes <- read.csv( "../fustes.csv" )
 
 # padronizando observações:
-
 fustes$obs[ fustes$obs == "tortinha" ] <- "torta"
 fustes$obs[ fustes$obs == "morta, ataq de xilóf" ] <- "morta"
+fustes$obs[ fustes$obs == "bl" ] <- "invasora"
+fustes$obs[ fustes$obs == "broto ladrao do lado" ] <- "invasora"
+fustes$obs[ fustes$obs == "parasitada " ] <- "parasitada"
+fustes$obs[ fustes$obs == "ponteira seca " ] <- "ponteira seca"
 
+write.csv( fustes, "fustes_atualizado.csv" )
+#table( fustes$obs )
 # analisando dap 
 
 fustes$cap <- as.numeric( gsub( ",", ".", gsub( "\\.", "", fustes$cap ) ) )
