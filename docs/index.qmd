@@ -1,14 +1,15 @@
 ---
-title: "Análise de dossel - Inventário Florestal"
+title: "Inventário Florestal"
 format:
   html:
+    lang: pt
     toc: true
     number-sections: true
 ---
 
 # Análise de dossel
 
-Análise de dossel de onze parcelas amostradas durante o inventário com imagem feita utilizando a câmera do celular Samsung S10e.
+Análise de dossel de onze parcelas amostradas durante o inventário realizado no povoamento de _Eucalyptus saligna_ em propriedade localizada no município de Campina do Monte Alegre - SP, com imagem feita utilizando a câmera do celular Samsung S10e.
 
 ```{r, include = FALSE}
 library( exiftoolr )
@@ -81,7 +82,7 @@ DT::datatable( dt[ order( dt[, 1 ] ), ], rownames = FALSE )
 
 \  Já a parcela com maior quantidade de pixels na classe de gap pequeno (maior cobertura de dossel) foi a parcela `r dt[ which.min( dt[, 4 ] ), 1 ]` com `r min( dt[, 4 ] ) * 100`% dessa classe de espaçamento.
 
-\  A parcela `r dt[ which.max( dt[, 6 ] ), 1 ]` obteve a maior cobertura foliar, com `r dt[ which.max( dt[, 6 ] ), 6 ] * 100`%. Já a parcela `r dt[ which.min( dt[, 6 ] ), 1 ]`, apresentou a menor porcentagem de cobertura foliar, com `r dt[ which.min( dt[, 6 ] ), 6 ] * 100`%
+\  A parcela `r dt[ which.max( dt[, 6 ] ), 1 ]` obteve a maior cobertura foliar, com `r dt[ which.max( dt[, 6 ] ), 6 ] * 100`%. Já a parcela `r dt[ which.min( dt[, 6 ] ), 1 ]`, apresentou a menor porcentagem de cobertura foliar, com `r dt[ which.min( dt[, 6 ] ), 6 ] * 100`%.
 
 # DAP médio por parcela
 
